@@ -26,8 +26,5 @@ let cmd ~debug_trace ~entry_point ~source_file ~unsafe =
     match debug_trace with
     | None -> ()
     | Some path -> Abstract_trace.write_json path
-  with
-  | Abstract_interpreter_control_flow.RecursiveFunctionCall ->
+  with Abstract_interpreter_control_flow.RecursiveFunctionCall ->
     Log.err (fun m -> m "Too many recursive calls")
-  | Abstract_interpreter_control_flow.Unsupported_instruction i ->
-    Log.err (fun m -> m "Unsupported instruction %s" i)
