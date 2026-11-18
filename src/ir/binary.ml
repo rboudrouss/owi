@@ -1058,6 +1058,10 @@ type simple_instruction =
   | Any_convert_extern
   | Extern_convert_any
 
+type catch =
+  | Catch of indice * indice
+  | Catch_all of indice
+
 (** Instructions *)
 type instr =
   | Simple of simple_instruction
@@ -1083,10 +1087,6 @@ type instr =
   | Try_table of
       string option * block_type option * catch list * expr Annotated.t
   | Throw of indice
-
-and catch =
-  | Catch of indice * indice
-  | Catch_all of indice
 
 and expr = instr Annotated.t list
 

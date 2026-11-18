@@ -426,6 +426,10 @@ type simple_instruction =
 
 val pp_simple_instruction : simple_instruction Fmt.t
 
+type catch =
+  | Catch of indice * indice
+  | Catch_all of indice
+
 type instr =
   | Simple of simple_instruction
   | Block of string option * block_type option * expr Annotated.t
@@ -449,10 +453,6 @@ type instr =
   | Try_table of
       string option * block_type option * catch list * expr Annotated.t
   | Throw of indice
-
-and catch =
-  | Catch of indice * indice
-  | Catch_all of indice
 
 and expr = instr Annotated.t list
 

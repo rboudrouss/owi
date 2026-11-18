@@ -693,6 +693,10 @@ type array_instr =
   | Init_data of indice * indice
   | Init_elem of indice * indice
 
+type catch =
+  | Catch of indice * indice
+  | Catch_all of indice
+
 type instr =
   | I32 of i32_instr
   | I64 of i64_instr
@@ -742,10 +746,6 @@ type instr =
   (* GC convesion instructions *)
   | Any_convert_extern
   | Extern_convert_any
-
-and catch =
-  | Catch of indice * indice
-  | Catch_all of indice
 
 and expr = instr list
 

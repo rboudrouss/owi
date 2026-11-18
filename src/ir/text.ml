@@ -1469,6 +1469,10 @@ let pp_array_instr ppf = function
   | Init_elem (id1, id2) ->
     pf ppf "array.init_elem %a %a" pp_indice id1 pp_indice id2
 
+type catch =
+  | Catch of indice * indice
+  | Catch_all of indice
+
 (** Instructions *)
 
 type instr =
@@ -1520,10 +1524,6 @@ type instr =
   (* GC convesion instructions *)
   | Any_convert_extern
   | Extern_convert_any
-
-and catch =
-  | Catch of indice * indice
-  | Catch_all of indice
 
 and expr = instr list
 
