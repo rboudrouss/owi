@@ -2151,7 +2151,8 @@ let validate_tags (modul : Module.t) =
       let _, (_, rt) =
         match tag with Local { typ; _ } -> typ | Imported { typ; _ } -> typ
       in
-      if List.is_empty rt then Ok () else Error `Non_empty_tag_result_type )
+      if List.is_empty rt then Ok ()
+      else Error (`Type_mismatch "non-empty tag result type") )
     modul.tag
 
 let modul (modul : Module.t) =
