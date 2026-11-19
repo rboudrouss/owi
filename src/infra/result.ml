@@ -301,4 +301,4 @@ let err_to_exit_code = function
   | `Table_size -> 99
   | `Proc_exit _n -> 100
   | `Cast_failure -> 101
-  | `Uncaught_exception -> 101
+  | `Uncaught_exception -> 102
