@@ -44,7 +44,12 @@ let check_error ~expected ~got : unit Result.t =
     | `Empty_identifier -> String.equal expected "unknown operator"
     | `Type_mismatch "non-empty tag result type" ->
       String.equal expected "non-empty tag result type"
-    | `Type_mismatch _ -> String.starts_with ~prefix:"type mismatch:" expected
+    | `Type_mismatch "expected [i32] but stack is []" ->
+      String.equal expected
+        "type mismatch: instruction requires [i32] but stack has []"
+    | `Type_mismatch "expected [i32] but stack is [i64]" ->
+      String.equal expected
+        "type mismatch: instruction requires [i32] but stack has [i64]"
     | `Offset_out_of_range ->
       (* TODO: should be removed *)
       String.equal "alignment must not be larger than natural" expected
